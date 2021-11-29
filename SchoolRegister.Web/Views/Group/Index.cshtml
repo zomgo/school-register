@@ -1,0 +1,42 @@
+﻿@model IEnumerable<SchoolRegister.ViewModels.VMs.GroupVm>
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a asp-action="AddOrEditGroup">@Localizer["CreateNew"]</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Localizer["Name"]
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.ActionLink(@Localizer["Edit"].Value, "AddOrEditGroup", new { id = item.Id }) |
+
+
+
+
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
